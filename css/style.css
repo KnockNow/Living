@@ -1,0 +1,97 @@
+/* Import */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+/* End Import*/
+/* Body page*/
+.no-margin {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.ion-home:before,
+.ion-ios-pulse-strong:before,
+.ion-headphone:before,
+.ion-disc:before {
+  margin-right: 12px;
+}
+/* End Body page*/
+
+/* Top */
+.headBar {
+  height: 86px;
+  background-color: #222428;
+}
+.logo {
+  z-index: 1;
+  font-size: 2.5em;
+  color: #c0392b;
+  padding: 0.5em;
+  font-family: 'Roboto', sans-serif;
+  /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08),*/
+              /*0 3px 1px -2px rgba(0, 0, 0, .2);*/
+
+  -webkit-box-shadow: 0 2px 4px 0 rgb(0, 0, 0);
+  -moz-box-shadow: 0 2px 4px 0 rgb(0, 0, 0);
+  box-shadow: 0 2px 4px 0 rgb(0, 0, 0);
+  -o-box-shadow: 0 2px 4px 0 rgb(0, 0, 0);
+  -ms-box-shadow: 0 2px 4px 0 rgb(0, 0, 0);
+}
+
+.search {
+  font-size: 0.5em;
+  float: right;
+  background-color: #36383d;
+  border: 0px;
+  border-radius: 2px;
+  padding: 0.5em;
+}
+
+.search:focus {
+  border: 0px;
+  outline: none;
+}
+/* End top */
+
+/* container-living */
+.container-living {
+  height: 90vh;
+  background-color: #383838;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+/* End container-living */
+
+/* control */
+.control {
+  height: 90vh;
+  background-color: #222428;
+  font-size: 17px;
+  padding-top: 2em !important;
+  border-left: 2px solid transparent;
+}
+
+.controlActive,
+.control span:hover {
+  cursor: pointer;
+  color: #c0392b;
+  border-left: 2px solid #c0392b;
+}
+.control span:hover label {
+  cursor: pointer;
+}
+.control span {
+  display: block;
+  padding: 0.5em 3em;
+
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -ms-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+}
+/* End control */
+
+/* main */
+.main {
+
+}
+/* End main */
