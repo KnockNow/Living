@@ -36,18 +36,28 @@
   -ms-box-shadow: 0 2px 4px 0 rgb(0, 0, 0);
 }
 
+.logo .ion-android-search,
 .search {
   font-size: 0.5em;
   float: right;
   background-color: #36383d;
   border: 0px;
-  border-radius: 2px;
   padding: 0.5em;
 }
 
 .search:focus {
   border: 0px;
   outline: none;
+}
+
+.smallMenu {
+  display: none;
+  float: right;
+  margin: 0em 1em;
+}
+
+.smallMenu:hover {
+  cursor: pointer;
 }
 /* End top */
 
