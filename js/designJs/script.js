@@ -19,8 +19,6 @@ $( document ).ready(function() {
     	var width = $(window).width(), height = $(window).height();
 		  var $window = $(window);
 
-      console.log($window.width());
-
       if ($window.width() < 1235) {
         $('.control').css('display', 'none');
         $('.smallMenu').css('display', 'block');
