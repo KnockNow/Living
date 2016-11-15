@@ -168,6 +168,8 @@ body {
 .discover {
     background-color: #c0392a;
     height: 90vh;
+    overflow-y: auto;
+    margin-bottom: 5em;
 }
 
 .discover h1 {
@@ -211,12 +213,65 @@ body {
     margin: 1em;
 }
 
-#songs {
-    padding: 1em;
-    /*background-color: red;*/
+/* Import */
+.import {
+  background-color: #222428;
+  padding: 1em;
+  box-shadow: 0 2px 4px 0 rgb(0, 0, 0);
+  margin-top: 4em;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#songs li {
+/*Using a background color, but you can use a background image to represent a button*/
+.inputWrapper {
+  font-size: 19px;
+  height: 80px;
+  width: 300px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  background-color: #222428;
+  margin-top: 5em;
+  margin-left: auto;
+  text-align: center;
+  padding: 1.5em;
+  border-radius: 2px;
+  margin-right: auto;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08),
+            0 3px 1px -2px rgba(0, 0, 0, .2);
+}
+
+.fileInput {
+    cursor: pointer;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    right: 0;
+    /*This makes the button huge so that it can be clicked on*/
+    font-size:50px;
+}
+.hiddenText {
+    /*Opacity settings for all browsers*/
+    opacity: 0;
+    -moz-opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
+}
+
+.iconImport {
+  margin-right: 10px;
+}
+/* End import */
+
+#songs,
+#list {
+    padding: 1em;
+}
+
+#songs li,
+#list li {
     list-style: none;
     padding: 2em;
     background-color: #c0392b;
