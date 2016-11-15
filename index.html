@@ -14,41 +14,76 @@
 	</head>
 	<body>
 		<div class='row no-margin headBar'>
-      <div class="col-md-12 logo">
-        <span class="ion-ios-pulse-strong"> Living</span>
-        <span class="ion-android-search"></span>
-        <input class="search" placeholder="Music, artist..."/>
-        <span class="smallMenu">
-          <span class="ion-navicon-round"></span>
-        </span>
-      </div>
+      		<div class="col-md-12 logo">
+        		<span class="ion-ios-pulse-strong"> Living</span>
+        		<span class="ion-android-search"></span>
+        		<input class="search" placeholder="Music, artist..."/>
+        		<span class="smallMenu">
+          		<span id='iconSmallMenu' class="ion-navicon-round"></span>
+        		</span>
+      		</div>
 		</div>
-    <div class="row no-margin container-living">
-      <div class="col-md-2 control no-margin">
-        <span class="controlActive">
-          <label class='ion-home'>
-          Home
-        </span>
-        <span>
-          <label class='ion-headphone'>
-          My Music
-        </span>
-        <span>
-          <label class='ion-disc'>
-          Discover
-        </span>
-      </div>
-      <div class="col-md-9 main">
-        <h2 id="currentSong">Aucun son joué</h2>
-        <audio src="#" controls>
-          Votre navigateur ne gère pas l'élément <code>video</code>.
-        </audio>
-        <ul id="songs">
-          <li data-source="data/01_Different_World.mp3">Different World</li>
-          <li data-source="data/01_The_Ides_Of_March.mp3">The Ides Of March</li>
-          <li data-source="data/02_Children_Of_The_Damned.mp3">Children Of The Damned</li>
-        </ul>
-      </div>
-    </div>
+    	<div class="row no-margin container-living">
+	      	<nav class="col-md-2 control no-margin">
+	        	<span id="home" class="controlActive">
+	          		<label class='ion-home'>
+	          		Home
+	        	</span>
+	        	<span id="music">
+	          		<label class='ion-headphone'>
+	          		My Music
+	        	</span>
+	        	<span id="disc">
+	          	<label class='ion-disc'>
+	          	Discover
+	        	</span>
+	      	</nav>
+			<nav class="col-md-12 control-mobile">
+				<span id="homeSmall" class="ion-home controlActive">Home</span>
+				<span id="musicSmall" class='ion-headphone'>My Music</span>
+				<span id="discSmall" class='ion-disc'>Discover</span>
+			</nav>
+	      	<div class="col-md-10 main">
+				<h1 class='text-shadow'>Welcome on Living,<br> just listen to<br> your music and enjoy !</h1>
+				<div class="struc">
+					<span class="ion-headphone"></span>
+					<label>Find your music and enjoy</label>
+				</div>
+				<div class="struc">
+					<span class="ion-disc"></span>
+					<label>Discover a new music !</label>
+				</div>
+			</div>
+			<div class="col-md-10 myMusic">
+	        	<ul id="songs">
+	         		<li id="1" data-source="data/01_Different_World.mp3">
+						<span class="ion-play"></span>
+						<label>Different World</label>
+					</li>
+					<li id="2" data-source="data/01_The_Ides_Of_March.mp3">
+						<span class="ion-play"></span>
+						<label>The Ides Of March</label>
+					</li>
+	          		<li id="3" data-source="data/02_Children_Of_The_Damned.mp3">
+						<span class="ion-play"></span>
+						<label>Children Of The Damned</label>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-10 discover">
+				<h1 class='text-shadow'>Very sorry... <br> But it's really just a practical work :(</h1>
+			</div>
+    	</div>
+		<div class='wrapPlayer'>
+			<span id='container-bar'>
+				<span id="bar"></span>
+				<label id="cursor"></label>
+			</span>
+			<span class="ion-music-note"></span>
+			<h2 id="currentSong">No song played.</h2>
+			<audio src="#" controls>
+			Votre navigateur ne gère pas l'élément <code>video</code>.
+			</audio>
+		</div>
 	</body>
 </html>
