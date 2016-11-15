@@ -1,6 +1,7 @@
-/* Import */
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-/* End Import*/
+@font-face {
+  font-family: Roboto;
+  src: url('fonts/Roboto-Regular.ttf');
+}
 /* Body page*/
 body {
     overflow: hidden;
