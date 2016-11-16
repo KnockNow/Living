@@ -55,10 +55,10 @@ function tplHTMLSong(source, title, artist, genre) {
       var cursor = $('#cursor');
       var player = $('audio');
 
-//       $('#messageSuccesImport').click(function() {
-//         changeView('music');
-//       })
-//
+      $('#messageSuccesImport').click(function() {
+        changeView('music');
+      })
+
       var labelCurrentSong = $('#currentSong');
 
       var _audio = document.getElementById("audio-player"); // We need to use nativ selector instead jQuery selector to access specific properties
@@ -111,7 +111,8 @@ function tplHTMLSong(source, title, artist, genre) {
             percent = time / duration;
             percentLabel = (100 - (100 - (percent * 100))) + "%";
 
-            bar.width(percent);
+
+            bar.css('width', percentLabel);
             cursor.css('left', percentLabel);
 
             time = Math.round(time);

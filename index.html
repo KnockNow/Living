@@ -14,7 +14,6 @@
       <script type="text/javascript" src="js/lib/jquery-3.1.1.min.js"></script>
       <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
 			<script type="text/javascript" src="js/script.js"></script>
-      <script type="text/javascript" src="js/list_song.js"></script>
 			<script type="text/javascript" src="js/list_song.js"></script>
 			<script type="text/javascript" src="js/equalizer.js"></script>
 			<script src="./js/designJs/script.js"></script>
@@ -34,20 +33,20 @@
 		</header>
   	<div class="row no-margin container-living">
     	<nav class="col-md-2 control no-margin panel-select">
-      	<span id="home" class="controlActive" data-target="#panel-home">
+      	<span id="home" class="controlActive change-view" data-target="#panel-home">
         		<label class='ion-home'>Home</label>
       	</span>
-      	<span id="music" data-target="#panel-music">
+      	<span id="music" class="change-view" data-target="#panel-music">
         		<label class='ion-headphone'>My Music</label>
       	</span>
-      	<span id="disc" data-target="#panel-discovery">
-        	<label class='ion-disc'>Discover</label>
+      	<span id="disc" class="change-view" data-target="#panel-discovery">
+        	<label class='ion-disc'>Import song</label>
       	</span>
     	</nav>
 			<nav class="col-md-12 control-mobile panel-select">
-				<span id="homeSmall" class="ion-home" data-target="#panel-home">Home</span>
-				<span id="musicSmall" class='ion-headphone' data-target="#panel-music">My Music</span>
-				<span id="discSmall" class='ion-disc' data-target="#panel-discovery">Discover</span>
+				<span id="homeSmall" class="ion-home change-view controlActive" data-target="#panel-home">Home</span>
+				<span id="musicSmall" class='ion-headphone change-view' data-target="#panel-music">My Music</span>
+				<span id="discSmall" class='ion-disc change-view' data-target="#panel-discovery">Import song</span>
 			</nav>
     	<div class="col-md-10 main panel-display" id="panel-home">
 				<h1 class='text-shadow'>Welcome on Living,<br> just listen to<br> your music and enjoy !</h1>
@@ -60,17 +59,6 @@
 					<label>Discover a new music !</label>
 				</div>
 			</div>
-<!-- <<<<<<< HEAD
-			<div class="col-md-10 myMusic">
-				<div id="NoMusic">
-					<h1 class="ion-volume-mute"> No sound.</h1>
-					<h2>You can import your music in Import song !<h2>
-				</div>
-				<ul id="songs"></ul>
-			</div>
-			<div class="col-md-10 discover">
-
-======= -->
 			<div class="col-md-10 home panel-display hide" id="panel-music">
 				<div id="NoMusic">
 					<h1 class="ion-volume-mute"> No sound.</h1>
@@ -90,10 +78,10 @@
 			</div>
 			<div class="col-md-10 discover panel-display hide" id="panel-discovery">
 				<h2>In this section, you can import <br>your music</h2>
-				<div class="inputWrapper panel-select">
+				<div class="inputWrapper">
 					<span class="iconImport ion-ios-upload"></span>
 					<span id="messageImport">Import your song</span>
-					<span id="messageSuccesImport" data-target="#panel-music">Succes ! Go to My Music</span>
+					<span id="messageSuccesImport" class="change-view" data-target="#panel-music">Succes ! Go to My Music</span>
 					<input class="fileInput hiddenText" id="playerId" multiple type="file" accept="audio/*" />
 				</div>
 			</div>
@@ -104,7 +92,7 @@
 			</div>
 		</div>
 		<footer class='wrapPlayer'>
-			<span id='container-bar'>
+			<span id="container-bar">
 				<span id="bar"></span>
 				<label id="cursor"></label>
 			</span>
