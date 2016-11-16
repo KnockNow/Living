@@ -1,0 +1,343 @@
+out: style.css, sourcemap: true , compress: true
+
+// Color variables (appears count calculates by raw css)
+@color0: rgb(0, 0, 0); // Appears 11 times
+@color1: #c0392b; // Appears 9 times
+@color2: #222428; // Appears 5 times
+@color3: #ffffff; // Appears 3 times
+@color4: #36383d; // Appears 3 times
+@color5: #555555; // Appears 2 times
+@color6: #c0392a; // Appears 2 times
+@color7: #ff5b4a; // Appears 2 times
+
+// Width variables (appears count calculates by raw css)
+@width0: 300px; // Appears 2 times
+@width1: 100%; // Appears 2 times
+
+// Height variables (appears count calculates by raw css)
+@height0: 80vh; // Appears 2 times
+@height4: 90vh; // Appears 4 times
+@height7: 5px; // Appears 2 times
+
+@font-face {
+	font-family: Roboto;
+	src: url('fonts/Roboto-Regular.ttf');
+}
+body {
+	overflow: hidden;
+}
+.no-margin {
+	margin: 0px !important;
+	padding: 0px !important;
+}
+.ion-home:before, .ion-ios-pulse-strong:before, .ion-headphone:before, .ion-disc:before  {
+	margin-right: 12px;
+}
+.headBar {
+	background-color: @color2;
+	height: 86px;
+}
+.logo {
+	-moz-box-shadow: 0 2px 4px 0 @color0;
+	-ms-box-shadow: 0 2px 4px 0 @color0;
+	-o-box-shadow: 0 2px 4px 0 @color0;
+	-webkit-box-shadow: 0 2px 4px 0 @color0;
+	box-shadow: 0 2px 4px 0 @color0;
+	color: @color1;
+	font-family: 'Roboto', sans-serif;
+	font-size: 2.5em;
+	padding: 0.5em;
+	z-index: 1;
+	.ion-android-search {
+		background-color: @color4;
+		border: 0px;
+		float: right;
+		font-size: 0.5em;
+		padding: 0.5em;
+	}
+}
+.search {
+	background-color: @color4;
+	border: 0px;
+	float: right;
+	font-size: 0.5em;
+	padding: 0.5em;
+	&:focus {
+		border: 0px;
+		outline: none;
+	}
+}
+.smallMenu {
+	display: none;
+	float: right;
+	margin: 0em 1em;
+	&:hover {
+		cursor: pointer;
+	}
+}
+.container-living {
+	background-color: #383838;
+	color: @color3;
+	font-family: 'Roboto', sans-serif;
+	height: @height4;
+}
+.control {
+	background-color: @color2;
+	border-left: 2px solid transparent;
+	font-size: 17px;
+	height: @height4;
+	padding-top: 2em !important;
+	span {
+		-moz-transition: all 200ms;
+		-ms-transition: all 200ms;
+		-o-transition: all 200ms;
+		-webkit-transition: all 200ms;
+		display: block;
+		padding: 0.5em 1em;
+		transition: all 200ms;
+		&:hover {
+			border-left: 2px solid @color1;
+			color: @color1;
+			cursor: pointer;
+			padding-left: 2em;
+			label {
+				cursor: pointer;
+			}
+		}
+	}
+}
+.controlActive {
+	border-left: 2px solid @color1;
+	color: @color1;
+	cursor: pointer;
+	padding-left: 2em;
+}
+.control-mobile {
+	display: none;
+	span {
+		-moz-box-shadow: 0 2px 4px 0 @color0;
+		-moz-transition: all 200ms;
+		-ms-box-shadow: 0 2px 4px 0 @color0;
+		-ms-transition: all 200ms;
+		-o-box-shadow: 0 2px 4px 0 @color0;
+		-o-transition: all 200ms;
+		-webkit-box-shadow: 0 2px 4px 0 @color0;
+		-webkit-transition: all 200ms;
+		background-color: @color2;
+		border-left: 4px solid transparent;
+		box-shadow: 0 2px 4px 0 @color0;
+		display: block;
+		padding: 1em;
+		transition: all 200ms;
+		&:hover {
+			border-left: 4px solid @color1;
+			color: @color1;
+			cursor: pointer;
+			padding-left: 2em;
+		}
+	}
+}
+.main {
+	background-color: @color6;
+	height: @height4;
+	overflow-y: auto;
+	padding-bottom: 10em;
+	h1 {
+		font-size: 5em;
+		text-align: center;
+	}
+}
+.text-shadow {
+	text-shadow: 1px 1px rgba(108, 32, 24, 0.5) , 2px 2px rgba(117, 35, 26, 0.52) , 3px 3px rgba(125, 37, 28, 0.54) , 4px 4px rgba(132, 39, 29, 0.56) , 5px 5px rgba(139, 41, 31, 0.58) , 6px 6px rgba(144, 43, 32, 0.6) , 7px 7px rgba(149, 44, 33, 0.62) , 8px 8px rgba(153, 45, 34, 0.64) , 9px 9px rgba(157, 47, 35, 0.66) , 10px 10px rgba(161, 48, 35, 0.68) , 11px 11px rgba(164, 49, 36, 0.7) , 12px 12px rgba(167, 50, 37, 0.72) , 13px 13px rgba(170, 50, 37, 0.74) , 14px 14px rgba(172, 51, 38, 0.76) , 15px 15px rgba(175, 52, 38, 0.78) , 16px 16px rgba(177, 52, 39, 0.8) , 17px 17px rgba(179, 53, 39, 0.82) , 18px 18px rgba(181, 54, 40, 0.84) , 19px 19px rgba(182, 54, 40, 0.86) , 20px 20px rgba(184, 55, 40, 0.88) , 21px 21px rgba(186, 55, 41, 0.9) , 22px 22px rgba(187, 56, 41, 0.92) , 23px 23px rgba(188, 56, 41, 0.94) , 24px 24px rgba(190, 56, 41, 0.96) , 25px 25px rgba(191, 57, 42, 0.98);
+}
+.struc {
+	margin-top: 5em;
+	text-align: center;
+	span {
+		font-size: 100px;
+	}
+	label {
+		text-align: right;
+	}
+}
+.discover {
+	background-color: @color6;
+	display: none;
+	height: @height4;
+	margin-bottom: 5em;
+	overflow-y: auto;
+	padding-top: 2em;
+	h2 {
+		color: #8c0e00;
+		font-size: 50px;
+		text-align: center;
+	}
+}
+#messageImport {
+}
+#messageSuccesImport {
+	display: none;
+}
+.myMusic {
+	display: none;
+}
+#NoMusic {
+	margin-top: 5em;
+	h1 {
+		color: @color5;
+		font-size: 2em;
+		text-align: center;
+	}
+	h2 {
+		color: @color5;
+		font-size: 2em;
+		text-align: center;
+	}
+}
+.wrapPlayer {
+	background-color: @color4;
+	bottom: 0px;
+	color: #b5b5b5;
+	height: 60px;
+	position: fixed;
+	width: @width1;
+	span {
+		display: inline-block;
+		padding-left: 20px;
+	}
+	h2 {
+		display: inline-block;
+		font-size: 18px;
+		padding-left: 10px;
+	}
+	audio {
+		float: right;
+		margin: 1em;
+	}
+}
+.import {
+	background-color: @color2;
+	box-shadow: 0 2px 4px 0 @color0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 4em;
+	padding: 1em;
+	width: @width0;
+}
+.inputWrapper {
+	background-color: @color2;
+	border-radius: 2px;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08), 0 3px 1px -2px rgba(0, 0, 0, .2);
+	cursor: pointer;
+	font-family: 'Roboto', sans-serif;
+	font-size: 19px;
+	height: 80px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5em;
+	overflow: hidden;
+	padding: 1.5em;
+	position: relative;
+	text-align: center;
+	width: @width0;
+}
+.fileInput {
+	cursor: pointer;
+	font-size:50px;
+	height: 100%;
+	position:absolute;
+	right: 0;
+	top: 0;
+}
+.hiddenText {
+	-moz-opacity: 0;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+	opacity: 0;
+}
+.iconImport {
+	margin-right: 10px;
+}
+#songs {
+	height: @height0;
+	overflow-y: auto;
+	padding: 1em;
+	li {
+		-moz-transition: all 200ms;
+		-ms-transition: all 200ms;
+		-o-transition: all 200ms;
+		-webkit-transition: all 200ms;
+		background-color: @color1;
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08), 0 3px 1px -2px rgba(0, 0, 0, .2);
+		list-style: none;
+		padding: 2em;
+		transition: all 200ms;
+		&:hover {
+			background-color: @color7 !important;
+			cursor: pointer;
+		}
+		span {
+			padding-right: 10px;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		label {
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+}
+#list {
+	height: @height0;
+	overflow-y: auto;
+	padding: 1em;
+	li {
+		-moz-transition: all 200ms;
+		-ms-transition: all 200ms;
+		-o-transition: all 200ms;
+		-webkit-transition: all 200ms;
+		background-color: @color1;
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08), 0 3px 1px -2px rgba(0, 0, 0, .2);
+		list-style: none;
+		padding: 2em;
+		transition: all 200ms;
+	}
+}
+.musicPlayed {
+	background-color: @color7 !important;
+	cursor: pointer;
+}
+#container-bar {
+	background-color: #737373;
+	height: @height7;
+	padding: 0px;
+	position: absolute;
+	width: @width1;
+}
+#bar {
+	-moz-transition: all 300ms;
+	-ms-transition: all 300ms;
+	-o-transition: all 300ms;
+	-webkit-transition: all 300ms;
+	background-color: @color3;
+	background: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet);
+	height: @height7;
+	padding: 0px;
+	position: absolute;
+	transition: all 300ms;
+	width: 0px;
+}
+#cursor {
+	-moz-transition: all 300ms;
+	-ms-transition: all 300ms;
+	-o-transition: all 300ms;
+	-webkit-transition: all 300ms;
+	background-color: @color3;
+	bottom: -10px;
+	height: 13px;
+	left: 0%;
+	position: absolute;
+	transition: all 300ms;
+	width: 2px;
+}
