@@ -1,23 +1,4 @@
 (function($){
-<<<<<<< HEAD
-  var tplHTMLSong = function (source, title, artist, genre) {
-    source = (typeof source === "string") ? source : '';
-    title = (typeof title === "string") ? title : '';
-    artist = (typeof artist === "string") ? artist : '';
-    genre = (typeof genre === "string") ? genre : '';
-
-    return '<tr>'
-      + '<td data-source="' + source + '" class="song-title">'
-      + '<span class="icon-control ion-play"></span>'
-      + '<span>' + title + '</span>'
-      + '</td>'
-      + '<td class="song-artist">' + artist + '</td>'
-      + '<td class="song-genre">' + genre + '</td>'
-      + '</tr>';
-  };
-
-=======
->>>>>>> 0702b07a75bc471865e8a0e8e97ea39b9c85f431
   $(function(){
       $.getJSON("js/data/song.json", function(data) {
         var song = data.data;

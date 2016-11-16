@@ -6,25 +6,22 @@ var LIVING = LIVING || {
   }
 };
 
-<<<<<<< HEAD
-=======
-  function tplHTMLSong(source, title, artist, genre) {
-    source = (typeof source === "string") ? source : '';
-    title = (typeof title === "string") ? title : '';
-    artist = (typeof artist === "string") ? artist : '';
-    genre = (typeof genre === "string") ? genre : '';
+function tplHTMLSong(source, title, artist, genre) {
+  source = (typeof source === "string") ? source : '';
+  title = (typeof title === "string") ? title : '';
+  artist = (typeof artist === "string") ? artist : '';
+  genre = (typeof genre === "string") ? genre : '';
 
-    return '<tr>'
-      + '<td data-source="' + source + '" class="song-title">'
-      + '<span class="icon-control ion-play"></span>'
-      + '<span>' + title + '</span>'
-      + '</td>'
-      + '<td class="song-artist">' + artist + '</td>'
-      + '<td class="song-genre">' + genre + '</td>'
-      + '</tr>';
-  };
+  return '<tr>'
+    + '<td data-source="' + source + '" class="song-title">'
+    + '<span class="icon-control ion-play"></span>'
+    + '<span>' + title + '</span>'
+    + '</td>'
+    + '<td class="song-artist">' + artist + '</td>'
+    + '<td class="song-genre">' + genre + '</td>'
+    + '</tr>';
+};
 
->>>>>>> 0702b07a75bc471865e8a0e8e97ea39b9c85f431
 (function($){
   function addPlayIcon($element) {
     return $element.find('.icon-control').removeClass('ion-pause').addClass('ion-play');
@@ -57,33 +54,6 @@ var LIVING = LIVING || {
       var bar = $('#bar');
       var cursor = $('#cursor');
       var player = $('audio');
-<<<<<<< HEAD
-      var labelCurrentSong = $('#currentSong');
-
-      var _audio = document.getElementById("audio-player"); // We need to use nativ selector instead jQuery selector to access specific properties
-      var currentSong = null;
-      var nextSong = null;
-
-      // Manage play/pause audio for song in table and style
-      $('#panel-music').on('click', 'td.song-title', function() {
-          nextSong = $(this);
-
-          if (currentSong === null) { // Any song played
-            addPauseIcon(nextSong);
-            addMusicPlayedStyle(nextSong);
-          } else if (currentSong[0] === nextSong[0]) { // Next song is current song we check if player is paused or play and apply the good behaviour
-              if (_audio.paused) {
-                addPauseIcon(nextSong);
-
-                _audio.play();
-              } else {
-                addPlayIcon(nextSong);
-                addMusicPlayedStyle(nextSong);
-
-                _audio.pause();
-              }
-
-=======
 
 //       $('#messageSuccesImport').click(function() {
 //         changeView('music');
@@ -114,7 +84,6 @@ var LIVING = LIVING || {
                 _audio.pause();
               }
 
->>>>>>> 0702b07a75bc471865e8a0e8e97ea39b9c85f431
               return false;
           }  else { // Next song is different of the current song
             addPlayIcon(currentSong);
