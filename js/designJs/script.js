@@ -1,6 +1,4 @@
 $( document ).ready(function() {
-    // View display : Only 'home', 'music', 'disc'
-    var view = 'home';
     //Menu show : Only bool
     var smallMenu = false;
 
@@ -37,7 +35,7 @@ $( document ).ready(function() {
 
     });
 
-    $('.panel-select').on('click', 'span', function() {
+    $(document).on('click', '.change-view', function() {
         // This statement manage the menu navigation
         var currentElement = $(this);
         var elementDisplayed = $('.panel-select span.controlActive').first();
@@ -47,15 +45,17 @@ $( document ).ready(function() {
         }
 
         var targetDisplayed = elementDisplayed.data('target');
+        var menuCurrentElement = $('.panel-select span[data-target="' + targetDisplayed + '"]');
 
         $(targetDisplayed).addClass('hide');
-        elementDisplayed.removeClass('controlActive');
+        menuCurrentElement.removeClass('controlActive');
 
         // Show main content
         var currentTarget = currentElement.data('target');
+        var menuElement = $('.panel-select span[data-target="' + currentTarget + '"]');
 
         $(currentTarget).removeClass('hide');
-        currentElement.addClass('controlActive');
+        menuElement.addClass('controlActive');
     });
 
     // Display Small Menu
@@ -71,35 +71,5 @@ $( document ).ready(function() {
             $('#iconSmallMenu').removeClass('ion-navicon-round').addClass('ion-close');
             smallMenu = true;
         }
-    })
-
-// <<<<<<< HEAD
-//
-//     // Change view
-//     $('#home').click(function() {
-//       changeView('home');
-//     })
-//
-//     $('#music').click(function(){
-//       changeView('music');
-//     })
-//
-//     $('#disc').click(function(){
-//       changeView('disc');
-//     })
-//
-//     // For mobile
-//     $('#homeSmall').click(function() {
-//       changeMobileView('homeSmall');
-//     })
-//
-//     $('#musicSmall').click(function(){
-//       changeMobileView('musicSmall');
-//     })
-//
-//     $('#discSmall').click(function(){
-//       changeMobileView('discSmall');
-//     })
-// =======
-// >>>>>>> 419fecc310a6404aa08c8aa79fec6e4acbc25a6d
+    });
 });
