@@ -1,3 +1,11 @@
+var LIVING = LIVING || {
+  "events" : {
+    "song" : {
+      "list_updated" : "living.song.list_updated"
+    }
+  }
+};
+
 (function($){
   function addPlayIcon($element) {
     return $element.find('.icon-control').removeClass('ion-pause').addClass('ion-play');
@@ -13,6 +21,17 @@
 
   function removeMusicPlayedStyle($element) {
     return $element.parent().removeClass('musicPlayed');
+  }
+
+  function researchListSong () {
+    var songList = $('#panel-music td.song-title');
+    var songListName = [];
+
+    $.each(songList, function(index) {
+      songListName.push($(this).text());
+    });
+
+    return songListName;
   }
 
   $(function(){
@@ -82,11 +101,15 @@
       });
 
       // Search feature
+      // List by default content
+      songListName = researchListSong();
       var songList = $('#panel-music td.song-title');
-      var songListName = [];
 
-      $.each(songList, function(index) {
-        songListName.push($(this).text());
+      // Event trigger on loaded json file check js (list_song.js)
+      // Modification of some elements in DOM with AJAX must be reload to avoid missing DOM
+      $('#panel-music').on(LIVING.events.song.list_updated, function() {
+        songListName = researchListSong();
+        songList = $(document).find('#panel-music td.song-title');
       });
 
       $('input.search').on('keyup', function() {
