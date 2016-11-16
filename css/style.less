@@ -2,7 +2,7 @@ out: style.css, sourcemap: true , compress: true
 
 // Color variables (appears count calculates by raw css)
 @color0: rgb(0, 0, 0); // Appears 11 times
-@color1: #c0392b; // Appears 9 times
+@colorTheme: #c0392b; // Appears 9 times
 @color2: #222428; // Appears 5 times
 @color3: #ffffff; // Appears 3 times
 @color4: #36383d; // Appears 3 times
@@ -43,7 +43,7 @@ body {
 	-o-box-shadow: 0 2px 4px 0 @color0;
 	-webkit-box-shadow: 0 2px 4px 0 @color0;
 	box-shadow: 0 2px 4px 0 @color0;
-	color: @color1;
+	color: @colorTheme;
 	font-family: 'Roboto', sans-serif;
 	font-size: 2.5em;
 	padding: 0.5em;
@@ -96,8 +96,8 @@ body {
 		padding: 0.5em 1em;
 		transition: all 200ms;
 		&:hover {
-			border-left: 2px solid @color1;
-			color: @color1;
+			border-left: 2px solid @colorTheme;
+			color: @colorTheme;
 			cursor: pointer;
 			padding-left: 2em;
 			label {
@@ -107,8 +107,8 @@ body {
 	}
 }
 .controlActive {
-	border-left: 2px solid @color1;
-	color: @color1;
+	border-left: 2px solid @colorTheme;
+	color: @colorTheme;
 	cursor: pointer;
 	padding-left: 2em;
 }
@@ -130,8 +130,8 @@ body {
 		padding: 1em;
 		transition: all 200ms;
 		&:hover {
-			border-left: 4px solid @color1;
-			color: @color1;
+			border-left: 4px solid @colorTheme;
+			color: @colorTheme;
 			cursor: pointer;
 			padding-left: 2em;
 		}
@@ -162,7 +162,7 @@ body {
 }
 .discover {
 	background-color: @color6;
-	display: none;
+	// display: none;
 	height: @height4;
 	margin-bottom: 5em;
 	overflow-y: auto;
@@ -257,37 +257,69 @@ body {
 .iconImport {
 	margin-right: 10px;
 }
+// #songs {
+// 	height: @height0;
+// 	overflow-y: auto;
+// 	padding: 1em;
+// 	tr {
+// 		-moz-transition: all 200ms;
+// 		-ms-transition: all 200ms;
+// 		-o-transition: all 200ms;
+// 		-webkit-transition: all 200ms;
+// 		background-color: @colorTheme;
+// 		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08), 0 3px 1px -2px rgba(0, 0, 0, .2);
+// 		list-style: none;
+// 		padding: 2em;
+// 		transition: all 200ms;
+// 		&:hover {
+// 			background-color: @color7 !important;
+// 			cursor: pointer;
+// 		}
+// 		span {
+// 			padding-right: 10px;
+// 			&:hover {
+// 				cursor: pointer;
+// 			}
+// 		}
+// 		label {
+// 			&:hover {
+// 				cursor: pointer;
+// 			}
+// 		}
+// 	}
+// }
+
+table {
+		width: 100%;
+		// background-color: @colorTheme !important;
+		thead {
+			line-height: 3em;
+			color: #c0392a;
+			font-size: 1.1em;
+			tr th {
+				padding: 0 3em;
+			}
+		}
+}
+
 #songs {
-	height: @height0;
-	overflow-y: auto;
+	// background-color: red;
 	padding: 1em;
-	li {
-		-moz-transition: all 200ms;
-		-ms-transition: all 200ms;
-		-o-transition: all 200ms;
-		-webkit-transition: all 200ms;
-		background-color: @color1;
-		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08), 0 3px 1px -2px rgba(0, 0, 0, .2);
-		list-style: none;
-		padding: 2em;
-		transition: all 200ms;
-		&:hover {
-			background-color: @color7 !important;
-			cursor: pointer;
+
+	tr {
+		line-height: 4em;
+		border-top: 1px solid #484848;
+
+		td {
+				padding: 0 3em;
 		}
-		span {
-			padding-right: 10px;
-			&:hover {
-				cursor: pointer;
-			}
-		}
-		label {
-			&:hover {
-				cursor: pointer;
-			}
+
+		td span:first-child {
+			padding-right: 20px;
 		}
 	}
 }
+
 #list {
 	height: @height0;
 	overflow-y: auto;
@@ -297,7 +329,7 @@ body {
 		-ms-transition: all 200ms;
 		-o-transition: all 200ms;
 		-webkit-transition: all 200ms;
-		background-color: @color1;
+		background-color: @colorTheme;
 		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08), 0 3px 1px -2px rgba(0, 0, 0, .2);
 		list-style: none;
 		padding: 2em;
@@ -340,15 +372,4 @@ body {
 	position: absolute;
 	transition: all 300ms;
 	width: 2px;
-}
-
-#equalizer-modal {
-	.modal-dialog {
-		height: 80%;
-		width: 80%;
-	}
-}
-#equalizer {
-	height: 100%;
-	width: @width0;
 }

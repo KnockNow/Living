@@ -49,7 +49,7 @@
 				<span id="musicSmall" class='ion-headphone' data-target="#panel-music">My Music</span>
 				<span id="discSmall" class='ion-disc' data-target="#panel-discovery">Discover</span>
 			</nav>
-    	<div class="col-md-10 panel-display" id="panel-home">
+    	<div class="col-md-10 main panel-display" id="panel-home">
 				<h1 class='text-shadow'>Welcome on Living,<br> just listen to<br> your music and enjoy !</h1>
 				<div class="struc">
 					<span class="ion-headphone"></span>
@@ -71,7 +71,7 @@
 			<div class="col-md-10 discover">
 
 ======= -->
-			<div class="col-md-10 panel-display hide" id="panel-music">
+			<div class="col-md-10 home panel-display hide" id="panel-music">
 				<div id="NoMusic">
 					<h1 class="ion-volume-mute"> No sound.</h1>
 					<h2>You can import your music in Import song !<h2>
@@ -88,12 +88,7 @@
 					</tbody>
 				</table>
 			</div>
-			<div id="equalizer-modal" class="modal fade" role="dialog">
-				<div class="modal-dialog">
-					<canvas id="equalizer"></canvas>
-				</div>
-			</div>
-			<div class="col-md-10 panel-display hide" id="panel-discovery">
+			<div class="col-md-10 discover panel-display hide" id="panel-discovery">
 				<h2>In this section, you can import <br>your music</h2>
 				<div class="inputWrapper panel-select">
 					<span class="iconImport ion-ios-upload"></span>
@@ -103,6 +98,11 @@
 				</div>
 			</div>
   	</div>
+		<div id="equalizer-modal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<canvas id="equalizer"></canvas>
+			</div>
+		</div>
 		<footer class='wrapPlayer'>
 			<span id='container-bar'>
 				<span id="bar"></span>
