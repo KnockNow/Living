@@ -1,5 +1,7 @@
 (function($){
   $(function(){
+      var BPM = 128.0;
+
       var audio = document.getElementById('audio-player');
       var canvas = document.getElementById('equalizer');
 
@@ -7,7 +9,7 @@
       var audioCtx = new window.AudioContext();
       var audioSrc = audioCtx.createMediaElementSource(audio);
       var analyser = audioCtx.createAnalyser();
-      // analyser.fftSize = 2048;
+      // analyser.fftSize = 2048; Trame by default change if needed. You need to set a lower BPM if you increase fftSize.
 
       audioSrc.connect(analyser);
 
@@ -39,9 +41,10 @@
         var x = 0;
         for(var i = 0; i < bufferLength; i++) {
 
-          // 128.0 (Beat Per Minute) Speed for line
-          // The algorithm to get BPM for a song is very complex
-          var v = dataArray[i] / 128.0;
+          // (Beat Per Minute) Use to manage speed frame for canvas stroke.
+          // The algorithm to get BPM for a song is very complex.
+          // This is why we set this variable manualy.
+          var v = dataArray[i] / BPM;
           var y = v * CANVAS_HEIGHT / 2;
 
           if(i === 0) {
