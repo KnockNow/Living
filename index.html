@@ -56,25 +56,44 @@
 					<label>Discover a new music !</label>
 				</div>
 			</div>
-			<div class="col-md-10 panel-display" id="panel-music">
-      	<ul id="songs">
-       		<li id="1" data-source="data/01_Different_World.mp3">
-						<span class="ion-play"></span>
-						<label>Different World</label>
-					</li>
-					<li id="2" data-source="data/01_The_Ides_Of_March.mp3">
-						<span class="ion-play"></span>
-						<label>The Ides Of March</label>
-					</li>
-      		<li id="3" data-source="data/02_Children_Of_The_Damned.mp3">
-						<span class="ion-play"></span>
-						<label>Children Of The Damned</label>
-					</li>
-				</ul>
-				<div id="equalizer-modal" class="modal fade" role="dialog">
-					<div class="modal-dialog">
-							<canvas id="equalizer"></canvas>
-					</div>
+			<table class="col-md-10 panel-display" id="panel-music">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Artist</th>
+						<th>Genre</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="1" data-source="data/01_Different_World.mp3" class="song-title">
+							<span class="ion-play"></span>
+							<label>Different World</label>
+						</td>
+						<td class="song-artist">Iron Maiden</td>
+						<td class="song-genre">Hard-Rock</td>
+					</tr>
+					<tr>
+						<td id="2" data-source="data/01_The_Ides_Of_March.mp3" class="song-title">
+							<span class="ion-play"></span>
+							<label>The Ides Of March</label>
+						</td>
+						<td class="song-artist">Iron Maiden</td>
+						<td class="song-genre">Hard-Rock</td>
+					</tr>
+					<tr>
+						<td id="3" data-source="data/02_Children_Of_The_Damned.mp3" class="song-title">
+							<span class="ion-play"></span>
+							<label>Children Of The Damned</label>
+						</td>
+						<td class="song-artist">Iron Maiden</td>
+						<td class="song-genre">Hard-Rock</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="equalizer-modal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<canvas id="equalizer"></canvas>
 				</div>
 			</div>
 			<div class="col-md-10 panel-display" id="panel-discovery">
