@@ -54,11 +54,6 @@ function tplHTMLSong(source, title, artist, genre) {
       var bar = $('#bar');
       var cursor = $('#cursor');
       var player = $('audio');
-
-//       $('#messageSuccesImport').click(function() {
-//         changeView('music');
-//       })
-//
       var labelCurrentSong = $('#currentSong');
 
       var _audio = document.getElementById("audio-player"); // We need to use nativ selector instead jQuery selector to access specific properties
@@ -123,7 +118,7 @@ function tplHTMLSong(source, title, artist, genre) {
 
       // Search feature
       // List by default content
-      songListName = researchListSong();
+      var songListName = researchListSong();
       var songList = $('#panel-music td.song-title');
 
       // Event trigger on loaded json file check js (list_song.js)
@@ -133,22 +128,20 @@ function tplHTMLSong(source, title, artist, genre) {
         songList = $(document).find('#panel-music td.song-title');
       });
 
-      $('input.search').on('keyup', function() {
+      $('input.search').on('keyup', function(e) {
           var value = $.trim($(this).val());
 
-          if (value.length === 0) {
-            $(songList).parents().show();
+          if (value.length > 0) {
+            var regex = new RegExp(value, "i");
 
-            return false;
-          }
-
-          var regex = new RegExp(value, "i");
-
-          $.each(songListName, function (index) {
+            $.each(songListName, function (index) {
               if (!regex.test(songListName[index])) {
                 $(songList[index]).parent().hide();
+              } else {
+                $(songList[index]).parent().show();
               }
-          });
+            });
+          }
       });
   });
 })(jQuery);
