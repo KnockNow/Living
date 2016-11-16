@@ -187,31 +187,30 @@ body {
 		margin: 1em;
 	}
 }
-#songs {
+#panel-music {
 	padding: 1em;
-	li {
-		-moz-transition: all 200ms;
-		-ms-transition: all 200ms;
-		-o-transition: all 200ms;
-		-webkit-transition: all 200ms;
-		background-color: @red_dark;
-		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08), 0 3px 1px -2px rgba(0, 0, 0, .2);
-		list-style: none;
-		padding: 2em;
-		transition: all 200ms;
-		&:hover {
-			background-color: @red_light !important;
-			cursor: pointer;
-		}
-		span {
-			padding-right: 10px;
+	table {
+		width: 100%;
+		tbody tr {
+			-moz-transition: all 200ms;
+			-ms-transition: all 200ms;
+			-o-transition: all 200ms;
+			-webkit-transition: all 200ms;
+			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08), 0 3px 1px -2px rgba(0, 0, 0, .2);
+			list-style: none;
+			line-height: 28px;
+			transition: all 200ms;
 			&:hover {
+				background-color: @red_light !important;
 				cursor: pointer;
 			}
-		}
-		label {
-			&:hover {
-				cursor: pointer;
+			td {
+				&:hover {
+					cursor: pointer;					
+				}
+				.icon-control {
+					margin: 0 5px;
+				}
 			}
 		}
 	}
