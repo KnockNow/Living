@@ -29,23 +29,23 @@
 			</div>
 		</header>
   	<div class="row no-margin container-living">
-    	<nav class="col-md-2 control no-margin">
-      	<span id="home" class="controlActive">
+    	<nav class="col-md-2 control no-margin panel-select">
+      	<span id="home" class="controlActive" data-target="#panel-home">
         		<label class='ion-home'>Home</label>
       	</span>
-      	<span id="music">
+      	<span id="music" data-target="#panel-music">
         		<label class='ion-headphone'>My Music</label>
       	</span>
-      	<span id="disc">
+      	<span id="disc" data-target="#panel-discovery">
         	<label class='ion-disc'>Discover</label>
       	</span>
     	</nav>
-			<nav class="col-md-12 control-mobile">
-				<span id="homeSmall" class="ion-home controlActive">Home</span>
-				<span id="musicSmall" class='ion-headphone'>My Music</span>
-				<span id="discSmall" class='ion-disc'>Discover</span>
+			<nav class="col-md-12 control-mobile panel-select">
+				<span id="homeSmall" class="ion-home" data-target="#panel-home">Home</span>
+				<span id="musicSmall" class='ion-headphone' data-target="#panel-music">My Music</span>
+				<span id="discSmall" class='ion-disc' data-target="#panel-discovery">Discover</span>
 			</nav>
-    	<div class="col-md-10 main">
+    	<div class="col-md-10 panel-display" id="panel-home">
 				<h1 class='text-shadow'>Welcome on Living,<br> just listen to<br> your music and enjoy !</h1>
 				<div class="struc">
 					<span class="ion-headphone"></span>
@@ -56,7 +56,7 @@
 					<label>Discover a new music !</label>
 				</div>
 			</div>
-			<div class="col-md-10 myMusic">
+			<div class="col-md-10 panel-display" id="panel-music">
       	<ul id="songs">
        		<li id="1" data-source="data/01_Different_World.mp3">
 						<span class="ion-play"></span>
@@ -77,7 +77,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-10 discover">
+			<div class="col-md-10 panel-display" id="panel-discovery">
 				<h1 class='text-shadow'>Very sorry... <br> But it's really just a practical work :(</h1>
 			</div>
   	</div>
