@@ -28,12 +28,12 @@
         analyser.getByteTimeDomainData(dataArray);
 
         // Background canvas
-        canvasCtx.fillStyle = 'rgb(192,57,43)';
+        canvasCtx.fillStyle = 'rgb(34,36,40)';
         canvasCtx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Line
-        canvasCtx.lineWidth = 2;
-        canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+        canvasCtx.lineWidth = 0.5;
+        canvasCtx.strokeStyle = 'rgb(192, 57, 43)';
 
         canvasCtx.beginPath();
 
