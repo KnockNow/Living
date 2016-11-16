@@ -1,4 +1,5 @@
 (function($){
+<<<<<<< HEAD
   var tplHTMLSong = function (source, title, artist, genre) {
     source = (typeof source === "string") ? source : '';
     title = (typeof title === "string") ? title : '';
@@ -15,6 +16,8 @@
       + '</tr>';
   };
 
+=======
+>>>>>>> 0702b07a75bc471865e8a0e8e97ea39b9c85f431
   $(function(){
       $.getJSON("js/data/song.json", function(data) {
         var song = data.data;

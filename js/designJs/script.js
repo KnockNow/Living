@@ -72,4 +72,36 @@ $( document ).ready(function() {
             smallMenu = true;
         }
     })
+<<<<<<< HEAD
+=======
+// <<<<<<< HEAD
+//
+//     // Change view
+//     $('#home').click(function() {
+//       changeView('home');
+//     })
+//
+//     $('#music').click(function(){
+//       changeView('music');
+//     })
+//
+//     $('#disc').click(function(){
+//       changeView('disc');
+//     })
+//
+//     // For mobile
+//     $('#homeSmall').click(function() {
+//       changeMobileView('homeSmall');
+//     })
+//
+//     $('#musicSmall').click(function(){
+//       changeMobileView('musicSmall');
+//     })
+//
+//     $('#discSmall').click(function(){
+//       changeMobileView('discSmall');
+//     })
+// =======
+// >>>>>>> 419fecc310a6404aa08c8aa79fec6e4acbc25a6d
+>>>>>>> 0702b07a75bc471865e8a0e8e97ea39b9c85f431
 });
