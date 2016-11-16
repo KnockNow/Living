@@ -26,6 +26,7 @@ V2 :
 - Maxence : Intégration des flexBoxs (liste ou mosaique)
 
 TACHE A FAIRE :
+- (Alexis) : Search bug
 - Controleur audio
 - Mappage des touches pour le controle audio
 

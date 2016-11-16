@@ -37,6 +37,27 @@ $( document ).ready(function() {
 
     });
 
+    $('.panel-select').on('click', 'span', function() {
+        // This statement manage the menu navigation
+        var currentElement = $(this);
+        var elementDisplayed = $('.panel-select span.controlActive').first();
+
+        if (elementDisplayed.data('target') === currentElement.data('target')) {
+          return false;
+        }
+
+        var targetDisplayed = elementDisplayed.data('target');
+
+        $(targetDisplayed).addClass('hide');
+        elementDisplayed.removeClass('controlActive');
+
+        // Show main content
+        var currentTarget = currentElement.data('target');
+
+        $(currentTarget).removeClass('hide');
+        currentElement.addClass('controlActive');
+    });
+
     // Display Small Menu
     $('.smallMenu').click(function() {
         if(smallMenu) {
@@ -51,30 +72,33 @@ $( document ).ready(function() {
             smallMenu = true;
         }
     })
-
-    // Change view
-    $('#home').click(function() {
-      changeView('home');
-    })
-
-    $('#music').click(function(){
-      changeView('music');
-    })
-
-    $('#disc').click(function(){
-      changeView('disc');
-    })
-
-    // For mobile
-    $('#homeSmall').click(function() {
-      changeMobileView('homeSmall');
-    })
-
-    $('#musicSmall').click(function(){
-      changeMobileView('musicSmall');
-    })
-
-    $('#discSmall').click(function(){
-      changeMobileView('discSmall');
-    })
+// <<<<<<< HEAD
+//
+//     // Change view
+//     $('#home').click(function() {
+//       changeView('home');
+//     })
+//
+//     $('#music').click(function(){
+//       changeView('music');
+//     })
+//
+//     $('#disc').click(function(){
+//       changeView('disc');
+//     })
+//
+//     // For mobile
+//     $('#homeSmall').click(function() {
+//       changeMobileView('homeSmall');
+//     })
+//
+//     $('#musicSmall').click(function(){
+//       changeMobileView('musicSmall');
+//     })
+//
+//     $('#discSmall').click(function(){
+//       changeMobileView('discSmall');
+//     })
+// =======
+// >>>>>>> 419fecc310a6404aa08c8aa79fec6e4acbc25a6d
 });

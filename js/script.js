@@ -1,102 +1,152 @@
+var LIVING = LIVING || {
+  "events" : {
+    "song" : {
+      "list_updated" : "living.song.list_updated"
+    }
+  }
+};
+
+  function tplHTMLSong(source, title, artist, genre) {
+    source = (typeof source === "string") ? source : '';
+    title = (typeof title === "string") ? title : '';
+    artist = (typeof artist === "string") ? artist : '';
+    genre = (typeof genre === "string") ? genre : '';
+
+    return '<tr>'
+      + '<td data-source="' + source + '" class="song-title">'
+      + '<span class="icon-control ion-play"></span>'
+      + '<span>' + title + '</span>'
+      + '</td>'
+      + '<td class="song-artist">' + artist + '</td>'
+      + '<td class="song-genre">' + genre + '</td>'
+      + '</tr>';
+  };
+
 (function($){
+  function addPlayIcon($element) {
+    return $element.find('.icon-control').removeClass('ion-pause').addClass('ion-play');
+  }
+
+  function addPauseIcon($element) {
+    return $element.find('.icon-control').removeClass('ion-play').addClass('ion-pause');
+  }
+
+  function addMusicPlayedStyle($element) {
+    return $element.parent().addClass('musicPlayed');
+  }
+
+  function removeMusicPlayedStyle($element) {
+    return $element.parent().removeClass('musicPlayed');
+  }
+
+  function researchListSong () {
+    var songList = $('#panel-music td.song-title');
+    var songListName = [];
+
+    $.each(songList, function(index) {
+      songListName.push($(this).text());
+    });
+
+    return songListName;
+  }
+
   $(function(){
-      var v = document.getElementsByTagName("audio")[0];
-      var bar = document.getElementById('bar');
-      var cursor = document.getElementById('cursor');
+      var bar = $('#bar');
+      var cursor = $('#cursor');
       var player = $('audio');
-      var currentSong = $('#currentSong');
 
-      var idListen = '';
-      var idNext = '';
+//       $('#messageSuccesImport').click(function() {
+//         changeView('music');
+//       })
+//
+      var labelCurrentSong = $('#currentSong');
 
-      $('#messageSuccesImport').click(function() {
-        changeView('music');
-      })
+      var _audio = document.getElementById("audio-player"); // We need to use nativ selector instead jQuery selector to access specific properties
+      var currentSong = null;
+      var nextSong = null;
 
-      $('#songs').on('click', 'li', function() {
-            var songSrc = $(this).data('source');
-            var songName = $(this).text();
+      // Manage play/pause audio for song in table and style
+      $('#panel-music').on('click', 'td.song-title', function() {
+          nextSong = $(this);
 
-            //Take the select id
-            idNext = $(this).closest('li').attr('id');
+          if (currentSong === null) { // Any song played
+            addPauseIcon(nextSong);
+            addMusicPlayedStyle(nextSong);
+          } else if (currentSong[0] === nextSong[0]) { // Next song is current song we check if player is paused or play and apply the good behaviour
+              if (_audio.paused) {
+                addPauseIcon(nextSong);
 
-            //Style li played
-            if (idListen) {
-                $('#'+idListen).removeClass('musicPlayed');
-                $('#'+idListen).children('span').removeClass('ion-pause').addClass('ion-play');
-            }
+                _audio.play();
+              } else {
+                addPlayIcon(nextSong);
+                addMusicPlayedStyle(nextSong);
 
-            if (idListen == idNext) {
-                if (v.paused) {
-                    $(this).children('span').removeClass('ion-play').addClass('ion-pause');
-                    v.play();
-                }else{
-                    $(this).children('span').removeClass('ion-pause').addClass('ion-play');
-                    $(this).addClass('musicPlayed');
-                    v.pause();
+                _audio.pause();
+              }
 
-                }
-                return false;
-            }
+              return false;
+          }  else { // Next song is different of the current song
+            addPlayIcon(currentSong);
+            removeMusicPlayedStyle(currentSong);
 
-            $(this).addClass('musicPlayed');
-            $(this).children('span').removeClass('ion-play').addClass('ion-pause');
-            idListen = idNext;
+            addPauseIcon(nextSong);
+            addMusicPlayedStyle(nextSong);
+          }
 
-            player.attr('src', songSrc);
-            currentSong.text(songName);
+          currentSong = nextSong;
 
-            v.play();
+          var songSrc = nextSong.data('source');
+          var songName = nextSong.text();
 
-            where = function(elem){
-                return elem.currentTime;
-            };
+          player.attr('src', songSrc);
+          labelCurrentSong.text(songName);
 
-            duree = function(elem){
-                return elem.duration;
-            };
+          _audio.play();
 
-            dure = function(elem) {
-                return elem.duration;
-            }
+          setInterval(function(){
+            var seconds, minutes, hours, time, duration, percent;
 
-            setInterval(function(){
-              var seconde, minute, heure, duree, dureeTotale, pourcentage;
-              duree = where(v);
-              dureeTotale = dure(v);
-              pourcentage = duree / dureeTotale;
-              bar.style.width = (100 - (100 - (pourcentage * 100))) + "%";
-              cursor.style.left = (100 - (100 - (pourcentage * 100))) + "%";
-              duree = Math.round(duree);
-              seconde =  duree % 60;
-              minute = (duree - seconde) / 60;
-              heure = (duree - seconde - (minute * 60)) / 3600;
-          }, 200);
+            time = _audio.currentTime;
+            duration = _audio.duration;
+            percent = time / duration;
+            percentLabel = (100 - (100 - (percent * 100))) + "%";
 
+            bar.width(percent);
+            cursor.css('left', percentLabel);
+
+            time = Math.round(time);
+            seconds =  time % 60;
+            minutes = (time - seconds) / 60;
+            hours = (time - seconds - (minutes * 60)) / 3600;
+        }, 200);
       });
 
       // Search feature
-      var songList = $('#songs li');
-      var songListName = [];
+      // List by default content
+      songListName = researchListSong();
+      var songList = $('#panel-music td.song-title');
 
-      $.each(songList, function(index) {
-        songListName.push($(this).text());
+      // Event trigger on loaded json file check js (list_song.js)
+      // Modification of some elements in DOM with AJAX must be reload to avoid missing DOM
+      $('#panel-music').on(LIVING.events.song.list_updated, function() {
+        songListName = researchListSong();
+        songList = $(document).find('#panel-music td.song-title');
       });
 
       $('input.search').on('keyup', function() {
           var value = $.trim($(this).val());
 
           if (value.length === 0) {
-              $(songList).show();
+            $(songList).parents().show();
 
-              return false;
+            return false;
           }
 
           var regex = new RegExp(value, "i");
 
           $.each(songListName, function (index) {
               if (!regex.test(songListName[index])) {
-                $(songList[index]).hide();
+                $(songList[index]).parent().hide();
               }
           });
       });
