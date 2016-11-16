@@ -8,6 +8,13 @@ $(document).ready(function() {
       element.className = isError ? 'error' : 'info'
     }
 
+    var cleanTitle = function (name) {
+      var clean = name.replace(/_/g," ");
+      var reg = new RegExp("[.;]+", "g");
+      var tab = clean.split(reg);
+      return tab[0];
+    }
+
     var addMusic = function (event) {
       var NbMusic = this.files.length;
       var ulList = document.getElementById('songs');
@@ -17,16 +24,21 @@ $(document).ready(function() {
         var urlFile = URL.createObjectURL(file)
         ulList.innerHTML += "<li id=song" + i + " data-source=" + urlFile + "></li>"
         var currentLi = document.getElementById("song" + i);
-        currentLi.innerHTML += "<span class='ion-play'></span> <label>" + this.files[i].name + "</label>"
+        currentLi.innerHTML += "<span class='ion-play'></span> <label>" + cleanTitle(this.files[i].name) + "</label>"
       }
 
-      var msg = document.getElementById("messageImport");
-      msg.innerHTML = "Succes ! Go to My Music"
+      var msgMusic = document.getElementById('NoMusic');
+      var msg = document.getElementById('messageImport');
+      var msgSucces = document.getElementById('messageSuccesImport');
+      var playerId = document.getElementById('playerId');
 
+      msg.style.display = 'none';
+      msgSucces.style.display = 'initial';
+      msgMusic.style.display = 'none';
+      playerId.style.display = 'none';
     }
 
     var inputNode = document.getElementById("playerId");
-    // inputNode.addEventListener('change', playSelectedFile, false)
     inputNode.addEventListener('change', addMusic, false)
   })()
 })

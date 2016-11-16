@@ -15,6 +15,7 @@
       <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/script.js"></script>
       <script type="text/javascript" src="js/loadMusic.js"></script>
+      <script type="text/javascript" src="js/manageView.js"></script>
       <script src="./js/designJs/script.js"></script>
 	</head>
 	<body>
@@ -57,15 +58,18 @@
 				</div>
 			</div>
 			<div class="col-md-10 myMusic">
-				<h1>No soung :(</h1>
-				<h2>But you can import your music in Import song !<h2>
+				<div id="NoMusic">
+					<h1 class="ion-volume-mute"> No sound.</h1>
+					<h2>You can import your music in Import song !<h2>
+				</div>
 				<ul id="songs"></ul>
 			</div>
 			<div class="col-md-10 discover">
-				<h1 class='text-shadow'>In this section, <br> you can import <br>your music</h1>
+				<h2>In this section, you can import <br>your music</h2>
 				<div class="inputWrapper">
 					<span class="iconImport ion-ios-upload"></span>
 					<span id="messageImport">Import your song</span>
+					<span id="messageSuccesImport">Succes ! Go to My Music</span>
 					<input class="fileInput hiddenText" id="playerId" multiple type="file" accept="audio/*" />
 				</div>
 			</div>

@@ -9,6 +9,10 @@
       var idListen = '';
       var idNext = '';
 
+      $('#messageSuccesImport').click(function() {
+        changeView('music');
+      })
+
       $('#songs').on('click', 'li', function() {
             var songSrc = $(this).data('source');
             var songName = $(this).text();
