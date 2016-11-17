@@ -20,8 +20,16 @@
 
       // reqFrame instance to cancel window.requestAnimationFrame
       var REQ_FRAME = null;
-      var CANVAS_WIDTH = canvas.width;
-      var CANVAS_HEIGHT = canvas.height;
+      var CANVAS_WIDTH = Math.floor(canvas.width);
+      var CANVAS_HEIGHT = Math.floor(canvas.height);
+
+      $(window).resize(function() {
+          // We need to get the element from nativ JS because
+          // the function of jQuery width have an issue sometimes return 100 (in % instead in pixel)
+          var canvas = document.getElementById('equalizer');
+
+          CANVAS_WIDTH = canvas.width;
+      });
 
       // Draw frequencies of song in canvas
       function draw() {
@@ -30,6 +38,8 @@
         analyser.getByteTimeDomainData(dataArray);
 
         // Background canvas
+        canvasCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
         canvasCtx.fillStyle = 'rgb(34,36,40)';
         canvasCtx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
