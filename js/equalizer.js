@@ -23,7 +23,7 @@
       var CANVAS_WIDTH = canvas.width;
       var CANVAS_HEIGHT = canvas.height;
 
-      // Draw frequency of song in canvas
+      // Draw frequencies of song in canvas
       function draw() {
         REQ_FRAME = window.requestAnimationFrame(draw);
 
