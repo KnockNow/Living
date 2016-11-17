@@ -39,8 +39,7 @@ function tplHTMLSong(source, title, artist, genre) {
     return $element.parent().removeClass('musicPlayed');
   }
 
-  function researchListSong () {
-    var songList = $('#panel-music td.song-title');
+  function researchListSong (songList) {
     var songListName = [];
 
     $.each(songList, function(index) {
@@ -54,11 +53,6 @@ function tplHTMLSong(source, title, artist, genre) {
       var bar = $('#bar');
       var cursor = $('#cursor');
       var player = $('audio');
-
-      $('#messageSuccesImport').click(function() {
-        changeView('music');
-      })
-
       var labelCurrentSong = $('#currentSong');
 
       var _audio = document.getElementById("audio-player"); // We need to use nativ selector instead jQuery selector to access specific properties
@@ -124,32 +118,38 @@ function tplHTMLSong(source, title, artist, genre) {
 
       // Search feature
       // List by default content
-      songListName = researchListSong();
       var songList = $('#panel-music td.song-title');
+      var songListName = researchListSong(songList);
 
       // Event trigger on loaded json file check js (list_song.js)
       // Modification of some elements in DOM with AJAX must be reload to avoid missing DOM
       $('#panel-music').on(LIVING.events.song.list_updated, function() {
-        songListName = researchListSong();
         songList = $(document).find('#panel-music td.song-title');
+        songListName = researchListSong(songList);
       });
 
-      $('input.search').on('keyup', function() {
+      $('input.search').on('keydown', function(e) {
+          var value = $(this).val();
+
+          if (e.which === 8 && value.length === 1) {
+            $(songList).parent().show();
+          }
+      });
+
+      $('input.search').on('keyup', function(e) {
           var value = $.trim($(this).val());
 
-          if (value.length === 0) {
-            $(songList).parents().show();
+          if (value.length > 0) {
+            var regex = new RegExp(value, "i");
 
-            return false;
-          }
-
-          var regex = new RegExp(value, "i");
-
-          $.each(songListName, function (index) {
+            $.each(songListName, function (index) {
               if (!regex.test(songListName[index])) {
                 $(songList[index]).parent().hide();
+              } else {
+                $(songList[index]).parent().show();
               }
-          });
+            });
+          }
       });
   });
 })(jQuery);
