@@ -81,7 +81,7 @@ function tplHTMLSong(source, title, artist, genre) {
       });
 
       // Manage play/pause audio for song in table and style
-      $('#panel-music').on('click', 'td.song-title', function() {
+      $('#panel-music').on('click', '.song-title', function() {
           nextSong = $(this);
 
           if (currentSong === null) { // Any song played
