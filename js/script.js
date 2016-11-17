@@ -6,6 +6,10 @@ var LIVING = LIVING || {
   }
 };
 
+function escapeRegExp(str) {
+  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
+
 function tplHTMLSong(source, title, artist, genre) {
   source = (typeof source === "string") ? source : '';
   title = (typeof title === "string") ? title : '';
@@ -140,7 +144,8 @@ function tplHTMLSong(source, title, artist, genre) {
           var value = $.trim($(this).val());
 
           if (value.length > 0) {
-            var regex = new RegExp(value, "i");
+            var strEscaped = escapeRegExp(value);
+            var regex = new RegExp(strEscaped, "i");
 
             $.each(songListName, function (index) {
               if (!regex.test(songListName[index])) {
