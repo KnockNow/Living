@@ -12,6 +12,7 @@
       // analyser.fftSize = 2048; Trame by default change if needed. You need to set a lower BPM if you increase fftSize.
 
       audioSrc.connect(analyser);
+      audioSrc.connect(audioCtx.destination); // Output song
 
       var bufferLength = analyser.frequencyBinCount;
       var dataArray = new Uint8Array(bufferLength);
