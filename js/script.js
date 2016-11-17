@@ -67,6 +67,16 @@ function tplHTMLSong(source, title, artist, genre) {
       var currentSong = null;
       var nextSong = null;
 
+      $(_audio).on('ended', function () {
+        if (currentSong !== null) {
+          var next = currentSong.parent().next();
+
+          if (next.length === 1) {
+            next.find('td.song-title').trigger('click');
+          }
+        }
+      });
+
       // Manage play/pause audio for song in table and style
       $('#panel-music').on('click', 'td.song-title', function() {
           nextSong = $(this);
