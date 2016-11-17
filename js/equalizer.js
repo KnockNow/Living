@@ -33,7 +33,13 @@
 
         // Line
         canvasCtx.lineWidth = 0.5;
-        canvasCtx.strokeStyle = 'rgb(192, 57, 43)';
+
+        if (sessionStorage.getItem('customColor')){
+          canvasCtx.strokeStyle = sessionStorage.getItem('customColor');
+        }else{
+          canvasCtx.strokeStyle = 'rgb(192, 57, 43)';
+        }
+        // canvasCtx.strokeStyle = 'rgb(192, 57, 43)';
 
         canvasCtx.beginPath();
 

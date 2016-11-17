@@ -16,6 +16,8 @@ function tplHTMLSong(source, title, artist, genre) {
   artist = (typeof artist === "string") ? artist : '';
   genre = (typeof genre === "string") ? genre : '';
 
+  var colorBg = 'colorBg';
+
   return '<tr>'
     + '<td data-source="' + source + '" class="song-title">'
     + '<span class="icon-control ion-play"></span>'

@@ -14,14 +14,16 @@
       <script type="text/javascript" src="js/lib/jquery-3.1.1.min.js"></script>
       <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
 			<script type="text/javascript" src="js/script.js"></script>
+			<script type="text/javascript" src="js/lib/animeColor.js"></script>
 			<script type="text/javascript" src="js/list_song.js"></script>
-			<!-- <script type="text/javascript" src="js/equalizer.js"></script> -->
+			<script type="text/javascript" src="js/equalizer.js"></script>
 			<script src="./js/designJs/script.js"></script>
 			<script type="text/javascript" src="js/loadMusic.js"></script>
+			<script type="text/javascript" src="js/changeColor.js"></script>
 	</head>
 	<body>
 		<header id="header-main" class='row no-margin headBar'>
-			<div class="col-md-12 logo">
+			<div class="col-md-12 logo color">
 		  		<span class="ion-ios-pulse-strong"> Living</span>
 		  		<span class="ion-android-search"></span>
 		  		<input class="search" placeholder="Music, artist..."/>
@@ -41,6 +43,9 @@
       	<span id="disc" class="change-view" data-target="#panel-discovery">
         	<label class='ion-disc'>Import song</label>
       	</span>
+				<span id="setting" class="change-view" data-target="#panel-setting">
+        	<label class='ion-gear-a'>Setting</label>
+      	</span>
 				<div id="equalizer-modal" class="modal-custom" role="dialog">
 					<div class="modal-dialog">
 						<canvas id="equalizer"></canvas>
@@ -52,8 +57,8 @@
 				<span id="musicSmall" class='ion-headphone change-view' data-target="#panel-music">My Music</span>
 				<span id="discSmall" class='ion-disc change-view' data-target="#panel-discovery">Import song</span>
 			</nav>
-    	<div class="col-md-10 main panel-display" id="panel-home">
-				<h1 class='text-shadow'>Welcome on Living,<br> just listen to<br> your music and enjoy !</h1>
+    	<div class="col-md-10 main colorBg panel-display" id="panel-home">
+				<h1>Welcome on Living,<br> just listen to<br> your music and enjoy !</h1>
 				<div class="struc">
 					<span class="ion-headphone"></span>
 					<label>Find your music and enjoy</label>
@@ -69,7 +74,7 @@
 					<h2>You can import your music in Import song !</h2>
 				</div>
 				<table>
-					<thead>
+					<thead class='color'>
 						<tr>
 							<th>Title</th>
 							<th>Artist</th>
@@ -80,13 +85,23 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="col-md-10 discover panel-display hide" id="panel-discovery">
+			<div class="col-md-10 discover colorBg panel-display hide" id="panel-discovery">
 				<h2>In this section, you can import <br>your music</h2>
 				<div class="inputWrapper">
 					<span class="iconImport ion-ios-upload"></span>
 					<span id="messageImport">Import your song</span>
 					<span id="messageSuccesImport" class="change-view" data-target="#panel-music">Succes ! Go to My Music</span>
 					<input class="fileInput hiddenText" id="playerId" multiple type="file" accept="audio/*" />
+				</div>
+			</div>
+			<div class="col-md-10 setting panel-display hide colorBg" id="panel-setting">
+				<h3 class="ion-gear-a">Setting</h3>
+				<div class="col-md-12 colorChange">
+					<h3 class="ion-paintbrush" id="actualColor">Color</h3>
+					<div class="change">
+						<h3>You can change the color theme</h3>
+						<input id="hexaColor" type="color" value="#c0392b" />
+					</div>
 				</div>
 			</div>
   	</div>

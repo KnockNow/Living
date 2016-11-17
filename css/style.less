@@ -19,6 +19,20 @@ out: style.css, sourcemap: true , compress: true
 @height4: 90vh; // Appears 4 times
 @height7: 5px; // Appears 2 times
 
+//Custom Color
+.colorBg {
+	background-color: @colorTheme;
+}
+
+.color {
+	color: @colorTheme;
+}
+
+.borderLeft {
+	color: @colorTheme;
+}
+
+
 @font-face {
 	font-family: Roboto;
 	src: url('fonts/Roboto-Regular.ttf');
@@ -30,7 +44,8 @@ body {
 	margin: 0px !important;
 	padding: 0px !important;
 }
-.ion-home:before, .ion-ios-pulse-strong:before, .ion-headphone:before, .ion-disc:before  {
+
+.ion-paintbrush::before, .ion-gear-a::before, .ion-home:before, .ion-ios-pulse-strong:before, .ion-headphone:before, .ion-disc:before  {
 	margin-right: 12px;
 }
 .headBar {
@@ -92,12 +107,12 @@ body {
 		-ms-transition: all 200ms;
 		-o-transition: all 200ms;
 		-webkit-transition: all 200ms;
+		transition: all 200ms;
 		display: block;
 		padding: 0.5em 1em;
-		transition: all 200ms;
 		&:hover {
-			border-left: 2px solid @colorTheme;
-			color: @colorTheme;
+			// border-left: 2px solid @colorTheme;
+			// color: @colorTheme;
 			cursor: pointer;
 			padding-left: 2em;
 			label {
@@ -107,10 +122,11 @@ body {
 	}
 }
 .controlActive {
-	border-left: 2px solid @colorTheme;
-	color: @colorTheme;
-	cursor: pointer;
-	padding-left: 2em;
+	background-color: #fff;
+    color: #b5b5b5;
+    color: #545454;
+    cursor: pointer;
+    padding-left: 2em;
 }
 .control-mobile {
 	display: none;
@@ -168,9 +184,57 @@ body {
 	overflow-y: auto;
 	padding-top: 2em;
 	h2 {
-		color: #8c0e00;
+		color: #fff;
 		font-size: 50px;
 		text-align: center;
+	}
+}
+.setting {
+	background-color: @colorTheme;
+	height: @height4;
+	margin-bottom: 5em;
+	overflow-y: auto;
+	padding-left: 40px !important;
+	h3 {
+		padding-bottom: 1em;
+	}
+	.colorChange {
+		font-family: 'Roboto',sans-serif;
+		padding: 1em;
+		text-align: center;
+
+		span {
+			display: block;
+			padding-bottom: 1.5em;
+		}
+
+		#actualColor {
+			padding: 0.5em;
+	    text-align: center;
+			background-color: #36383d;
+			color: #c1c1c1;
+			border-radius: 1px;
+			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08), 0 3px 1px -2px rgba(0, 0, 0, .2);
+		}
+
+		.change {
+			margin: 1em;
+			h3 {
+				color: #ffd7d2;
+				margin-top: 2em;
+			}
+			input {
+				// background-color: #bd1200;
+				color: #fff;
+    		border: 0;
+    		padding: .5em;
+			}
+			input:focus{outline: none}
+			::-webkit-input-placeholder {color: #ffc2c2;}
+			:-moz-placeholder {/* Firefox 18- */color: #ffc2c2;}
+			::-moz-placeholder {/* Firefox 19+ */color: #ffc2c2;}
+			:-ms-input-placeholder {color: #ffc2c2;}
+		}
 	}
 }
 #messageImport {
@@ -295,7 +359,7 @@ table {
 		border-top: 1px solid #484848;
 		&:hover {
 			cursor: pointer;
-			background-color: @subColorTheme;
+			background-color: #484848;
 		}
 		td {
 				padding: 0 3em;
@@ -324,7 +388,7 @@ table {
 	}
 }
 .musicPlayed {
-	background-color: @subColorTheme !important;
+	background-color: #484848 !important;
 	cursor: pointer;
 }
 #container-bar {
