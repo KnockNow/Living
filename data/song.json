@@ -4,28 +4,28 @@
       "source" : "data/01_Different_World.mp3",
       "title" : "Different World",
       "artist" : "Iron Maiden",
-      "genre" : "Heavy Metal",
+      "genre" : "Hard Rock",
       "extension" : "mp3"
     },
     {
       "source" : "data/01_Invaders.mp3",
       "title" : "Invaders",
       "artist" : "Iron Maiden",
-      "genre" : "Heavy Metal",
+      "genre" : "Hard Rock",
       "extension" : "mp3"
     },
     {
       "source" : "data/01_The_Ides_Of_March.mp3",
       "title" : "The Ides Of March",
       "artist" : "Iron Maiden",
-      "genre" : "Heavy Metal",
+      "genre" : "Hard Rock",
       "extension" : "mp3"
     },
     {
       "source" : "data/02_Children_Of_The_Damned.mp3",
       "title" : "Children Of The Damned",
       "artist" : "Iron Maiden",
-      "genre" : "Heavy Metal",
+      "genre" : "Hard Rock",
       "extension" : "mp3"
     }
   ]

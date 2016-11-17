@@ -9,9 +9,10 @@
       var audioCtx = new window.AudioContext();
       var audioSrc = audioCtx.createMediaElementSource(audio);
       var analyser = audioCtx.createAnalyser();
-      // analyser.fftSize = 2048; Trame by default change if needed. You need to set a lower BPM if you increase fftSize.
+      analyser.fftSize = 256;
 
       audioSrc.connect(analyser);
+      audioSrc.connect(audioCtx.destination); // Output song
 
       var bufferLength = analyser.frequencyBinCount;
       var dataArray = new Uint8Array(bufferLength);
@@ -19,27 +20,57 @@
 
       // reqFrame instance to cancel window.requestAnimationFrame
       var REQ_FRAME = null;
-      var CANVAS_WIDTH = canvas.width;
-      var CANVAS_HEIGHT = canvas.height;
+      var CANVAS_WIDTH = Math.floor(canvas.width);
+      var CANVAS_HEIGHT = Math.floor(canvas.height);
 
+      $(window).resize(function() {
+          // We need to get the element from nativ JS because
+          // the function of jQuery width have an issue sometimes return 100 (in % instead in pixel)
+          var canvas = document.getElementById('equalizer');
+
+          CANVAS_WIDTH = canvas.width;
+      });
+
+      // Draw frequencies of song in canvas
       function draw() {
         REQ_FRAME = window.requestAnimationFrame(draw);
 
         analyser.getByteTimeDomainData(dataArray);
 
         // Background canvas
+        canvasCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
         canvasCtx.fillStyle = 'rgb(34,36,40)';
         canvasCtx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Line
-        canvasCtx.lineWidth = 0.5;
+        var style;
 
         if (sessionStorage.getItem('customColor')){
-          canvasCtx.strokeStyle = sessionStorage.getItem('customColor');
-        }else{
-          canvasCtx.strokeStyle = 'rgb(192, 57, 43)';
+          style = sessionStorage.getItem('customColor');
+        } else {
+          // Sum trame frequencies
+          var sum = dataArray.reduce(function(a, b) {
+            return a + b;
+          }, 0);
+
+          // Calcul the average of sum trame frequencies
+          var sumMoy = sum / analyser.fftSize;
+
+          if (sumMoy >= 20 && sumMoy < 65) {
+            style = 'green';
+          } else if (sumMoy >= 65 && sumMoy <= 90) {
+            style = 'orange';
+          } else if (sumMoy >= 90) {
+            style = 'red';
+          } else {
+            style = 'white';
+          }
         }
-        // canvasCtx.strokeStyle = 'rgb(192, 57, 43)';
+
+        canvasCtx.strokeStyle = style;
+        canvasCtx.lineWidth = 0.5;
+
 
         canvasCtx.beginPath();
 

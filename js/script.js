@@ -6,10 +6,12 @@ var LIVING = LIVING || {
   }
 };
 
+// Clean input user for regex (Never trust in user input)
 function escapeRegExp(str) {
   return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 }
 
+// Build template html for song
 function tplHTMLSong(source, title, artist, genre) {
   source = (typeof source === "string") ? source : '';
   title = (typeof title === "string") ? title : '';
@@ -49,15 +51,25 @@ function tplHTMLSong(source, title, artist, genre) {
     var songListName = [];
 
     $.each(songList, function(index) {
+      var tmp = [];
       $(this).contents().filter(function() {
-        songListName.push($(this).text());
+        tmp.push($(this).text());
       });
+      songListName.push(tmp.join(' '));
     });
 
     return songListName;
   }
 
   $(function(){
+      var container = $(".container");
+      var mute = $('#muteButton');
+      var muted = $('#mutedButton');
+      var close = $('#closeButton');
+      var play = $("#playButton");
+      var pause = $("#pauseButton");
+      var seek = $("#seek");
+
       var bar = $('#bar');
       var cursor = $('#cursor');
       var player = $('audio');
@@ -67,9 +79,56 @@ function tplHTMLSong(source, title, artist, genre) {
       var currentSong = null;
       var nextSong = null;
 
+      // Autoplay the next song in list if exists
+      $(_audio).on('ended', function () {
+        if (currentSong !== null) {
+          var next = currentSong.parent().next();
+
+          if (next.length === 1) {
+            next.find('td.song-title').trigger('click');
+          }
+        }
+      });
+
       // Manage play/pause audio for song in table and style
-      $('#panel-music').on('click', 'td.song-title', function() {
+      $('#panel-music').on('click', '.song-title', function() {
           nextSong = $(this);
+
+          // Buttons de control audio
+          $("#controlAudio .bouttonControl").css("display", "block");
+          $('#playButton').css("display", "none");
+          $('#pauseButton').css("display", "inline-block");
+          _audio.volume = 1;
+          muted.hide();
+          mute.show();
+
+          play.click(function() {
+              _audio.play();
+              $(this).hide();
+              pause.show();
+              addPauseIcon(nextSong);
+          });
+
+          pause.click(function() {
+              _audio.pause();
+              $(this).hide();
+              play.show();
+              addPlayIcon(nextSong);
+          });
+
+          mute.click(function() {
+              _audio.volume = 0;
+              $(this).hide();
+              muted.show();
+          });
+
+
+          muted.click(function() {
+              _audio.volume = 1;
+              $(this).hide();
+              mute.show();
+          });
+
 
           if (currentSong === null) { // Any song played
             addPauseIcon(nextSong);
@@ -101,7 +160,7 @@ function tplHTMLSong(source, title, artist, genre) {
           var songName = nextSong.text();
 
           player.attr('src', songSrc);
-          labelCurrentSong.text(songName);
+          labelCurrentSong.text(" " + songName);
 
           _audio.play();
 
@@ -122,28 +181,31 @@ function tplHTMLSong(source, title, artist, genre) {
             minutes = (time - seconds) / 60;
             hours = (time - seconds - (minutes * 60)) / 3600;
         }, 200);
+
       });
 
       // Search feature
       // List by default content
-      var songList = $('#panel-music td');
+      var songList = $('#panel-music tbody tr');
       var songListName = researchListSong(songList);
 
       // Event trigger on loaded json file check js (list_song.js)
       // Modification of some elements in DOM with AJAX must be reload to avoid missing DOM
       $('#panel-music').on(LIVING.events.song.list_updated, function() {
-        songList = $(document).find('#panel-music td');
+        songList = $(document).find('#panel-music tbody tr');
         songListName = researchListSong(songList);
       });
 
+      // Workaround research on last char deleted
       $('input.search').on('keydown', function(e) {
           var value = $(this).val();
 
           if (e.which === 8 && value.length === 1) {
-            $(songList).parent().show();
+            $(songList).show();
           }
       });
 
+      // Research on (title, artist, genre)
       $('input.search').on('keyup', function(e) {
           var value = $.trim($(this).val());
 
@@ -152,10 +214,11 @@ function tplHTMLSong(source, title, artist, genre) {
             var regex = new RegExp(strEscaped, "i");
 
             $.each(songListName, function (index) {
+
               if (!regex.test(songListName[index])) {
-                $(songList[index]).parent().hide();
+                $(songList[index]).hide();
               } else {
-                $(songList[index]).parent().show();
+                $(songList[index]).show();
               }
             });
           }

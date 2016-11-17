@@ -20,6 +20,7 @@
 			<script src="./js/designJs/script.js"></script>
 			<script type="text/javascript" src="js/loadMusic.js"></script>
 			<script type="text/javascript" src="js/changeColor.js"></script>
+			<script type="text/javascript" src="js/mosaic.js"></script>
 	</head>
 	<body>
 		<header id="header-main" class='row no-margin headBar'>
@@ -43,14 +44,10 @@
       	<span id="disc" class="change-view" data-target="#panel-discovery">
         	<label class='ion-disc'>Import song</label>
       	</span>
-				<span id="setting" class="change-view" data-target="#panel-setting">
+		<span id="setting" class="change-view" data-target="#panel-setting">
         	<label class='ion-gear-a'>Setting</label>
       	</span>
-				<div id="equalizer-modal" class="modal-custom" role="dialog">
-					<div class="modal-dialog">
-						<canvas id="equalizer"></canvas>
-					</div>
-				</div>
+		<canvas id="equalizer"></canvas>
     	</nav>
 			<nav class="col-md-12 control-mobile panel-select">
 				<span id="homeSmall" class="ion-home change-view controlActive" data-target="#panel-home">Home</span>
@@ -69,9 +66,9 @@
 				</div>
 			</div>
 			<div class="col-md-10 home panel-display hide" id="panel-music">
+				<button id="list_songs" class="ion-navicon color"></button>
+				<button id="mosaic_songs" class="ion-grid color"></button>
 				<div id="NoMusic">
-					<h1 class="ion-volume-mute"> No sound.</h1>
-					<h2>You can import your music in Import song !</h2>
 				</div>
 				<table>
 					<thead class='color'>
@@ -84,6 +81,12 @@
 					<tbody id="songs">
 					</tbody>
 				</table>
+				<!-- Maxence code -->
+				<div class="flex_container">
+	      	<ul id="songs_grid">
+					</ul>
+				</div>
+				<!-- Fin Maxence code -->
 			</div>
 			<div class="col-md-10 discover colorBg panel-display hide" id="panel-discovery">
 				<h2>In this section, you can import <br>your music</h2>
@@ -110,10 +113,27 @@
 				<span id="bar"></span>
 				<label id="cursor"></label>
 			</span>
-			<span class="ion-music-note"></span>
-			<h2 id="currentSong">No song played.</h2>
+			<div id="controlAudio" class="row">
+				<div id="currentSongDiv" class="col-xs-6">
+					<h2 id="currentSong" class="ion-music-note"> No song played.</h2>
+				</div>
+
+				<!-- Bouttons de contrôle-->
+				<div class="col-xs-6 bouttonControl"><!-- player -->
+						<div id="playerGradient">
+				            <button id="playButton"><span class='ion-play color'></span></button>
+							<button id="mutedButton"><span class='ion-volume-mute color'></span></button>
+				            <button id="pauseButton"><span class='ion-pause color'></span></button><!-- / n'est pas afficher de base-->
+				            <button id="muteButton"><span class='ion-volume-high color'></span></button><!-- / n'est pas afficher de base-->
+							<!--<input type="range" id="seek" value="0" max=""/>-->
+							<div id="seek"></div>
+				            <button id="closeButton"><span class='ion-stop color'></span></button><!-- / n'est pas afficher de base-->
+
+				        </div><!-- / player -->
+				</div><!-- / Container-->
+			</div>
 			<audio id="audio-player" src="#" controls>
-				Your browsers is not compatible.
+				Votre navigateur ne gère pas l'élément <code>video</code>.
 			</audio>
 		</footer>
 	</body>
