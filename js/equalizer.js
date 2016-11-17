@@ -9,7 +9,7 @@
       var audioCtx = new window.AudioContext();
       var audioSrc = audioCtx.createMediaElementSource(audio);
       var analyser = audioCtx.createAnalyser();
-      // analyser.fftSize = 2048; Trame by default change if needed. You need to set a lower BPM if you increase fftSize.
+      analyser.fftSize = 256;
 
       audioSrc.connect(analyser);
       audioSrc.connect(audioCtx.destination); // Output song
@@ -44,8 +44,28 @@
         canvasCtx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
         // Line
+        // Sum trame frequencies
+        var sum = dataArray.reduce(function(a, b) {
+          return a + b;
+        }, 0);
+
+        // Calcul the average of sum trame frequencies
+        var sumMoy = sum / analyser.fftSize;
+
+        var style;
+
+        if (sumMoy >= 20 && sumMoy < 65) {
+          style = 'green';
+        } else if (sumMoy >= 65 && sumMoy <= 90) {
+          style = 'orange';
+        } else if (sumMoy >= 90) {
+          style = 'red';
+        } else {
+          style = 'white';
+        }
+
         canvasCtx.lineWidth = 0.5;
-        canvasCtx.strokeStyle = 'rgb(192, 57, 43)';
+        canvasCtx.strokeStyle = style;
 
         canvasCtx.beginPath();
 
