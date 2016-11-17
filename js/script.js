@@ -47,9 +47,11 @@ function tplHTMLSong(source, title, artist, genre) {
     var songListName = [];
 
     $.each(songList, function(index) {
+      var tmp = [];
       $(this).contents().filter(function() {
-        songListName.push($(this).text());
+        tmp.push($(this).text());
       });
+      songListName.push(tmp.join(' '));
     });
 
     return songListName;
@@ -124,13 +126,13 @@ function tplHTMLSong(source, title, artist, genre) {
 
       // Search feature
       // List by default content
-      var songList = $('#panel-music td');
+      var songList = $('#panel-music tbody tr');
       var songListName = researchListSong(songList);
 
       // Event trigger on loaded json file check js (list_song.js)
       // Modification of some elements in DOM with AJAX must be reload to avoid missing DOM
       $('#panel-music').on(LIVING.events.song.list_updated, function() {
-        songList = $(document).find('#panel-music td');
+        songList = $(document).find('#panel-music tbody tr');
         songListName = researchListSong(songList);
       });
 
@@ -138,7 +140,7 @@ function tplHTMLSong(source, title, artist, genre) {
           var value = $(this).val();
 
           if (e.which === 8 && value.length === 1) {
-            $(songList).parent().show();
+            $(songList).show();
           }
       });
 
@@ -150,10 +152,11 @@ function tplHTMLSong(source, title, artist, genre) {
             var regex = new RegExp(strEscaped, "i");
 
             $.each(songListName, function (index) {
+
               if (!regex.test(songListName[index])) {
-                $(songList[index]).parent().hide();
+                $(songList[index]).hide();
               } else {
-                $(songList[index]).parent().show();
+                $(songList[index]).show();
               }
             });
           }
