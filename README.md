@@ -4,9 +4,8 @@
 Get Started
 ======================
 
-=> git clone https://github.com/KnockNow/Living.git
- - On the folder Living :
-=> php -S localhost:3000
+- git clone https://github.com/KnockNow/Living.git
+- On the folder Living : php -S localhost:3000
 
 
 ====================
