@@ -18,6 +18,7 @@
 			<script type="text/javascript" src="js/equalizer.js"></script>
 			<script src="./js/designJs/script.js"></script>
 			<script type="text/javascript" src="js/loadMusic.js"></script>
+			<script type="text/javascript" src="js/mosaic.js"></script>
 	</head>
 	<body>
 		<header id="header-main" class='row no-margin headBar'>
@@ -62,6 +63,8 @@
 			</div>
 			<div class="col-md-10 home panel-display hide" id="panel-music">
 				<div id="NoMusic">
+					<button id="list_songs" class="ion-navicon"></button>
+					<button id="mosaic_songs" class="ion-grid"></button>
 					<h1 class="ion-volume-mute"> No sound.</h1>
 					<h2>You can import your music in Import song !</h2>
 				</div>
@@ -76,6 +79,12 @@
 					<tbody id="songs">
 					</tbody>
 				</table>
+
+				<div class="flex_container">
+	      	<ul id="songs_grid">
+					</ul>
+				</div>
+
 			</div>
 			<div class="col-md-10 discover panel-display hide" id="panel-discovery">
 				<h2>In this section, you can import <br>your music</h2>
@@ -113,9 +122,9 @@
 				        </div><!-- / player -->
 				</div><!-- / Container-->
 			</div>
-				<audio id="audio-player" src="#" controls>
-					Votre navigateur ne gère pas l'élément <code>video</code>.
-				</audio>
+			<audio id="audio-player" src="#" controls>
+				Votre navigateur ne gère pas l'élément <code>video</code>.
+			</audio>
 		</footer>
 	</body>
 </html>
