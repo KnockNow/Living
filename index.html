@@ -18,6 +18,7 @@
 			<script type="text/javascript" src="js/equalizer.js"></script>
 			<script src="./js/designJs/script.js"></script>
 			<script type="text/javascript" src="js/loadMusic.js"></script>
+			<script type="text/javascript" src="js/mosaic.js"></script>
 	</head>
 	<body>
 		<header id="header-main" class='row no-margin headBar'>
@@ -65,6 +66,8 @@
 			</div>
 			<div class="col-md-10 home panel-display hide" id="panel-music">
 				<div id="NoMusic">
+					<button id="list_songs" class="ion-navicon"></button>
+					<button id="mosaic_songs" class="ion-grid"></button>
 					<h1 class="ion-volume-mute"> No sound.</h1>
 					<h2>You can import your music in Import song !</h2>
 				</div>
@@ -79,6 +82,18 @@
 					<tbody id="songs">
 					</tbody>
 				</table>
+
+				<div class="flex_container">
+	      	<ul id="songs_grid">
+	       		<!--<li id="Mos_1" class="ion-play" data-source="data/01_Different_World.mp3">
+						</li>
+						<li id="Mos_2" class="ion-play" data-source="data/01_Invaders.mp3">
+						</li>
+	      		<li id="Mos_3" class="ion-play" data-source="data/02_Children_Of_The_Damned.mp3">
+						</li>-->
+					</ul>
+				</div>
+
 			</div>
 			<div class="col-md-10 discover panel-display hide" id="panel-discovery">
 				<h2>In this section, you can import <br>your music</h2>
