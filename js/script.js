@@ -6,10 +6,12 @@ var LIVING = LIVING || {
   }
 };
 
+// Clean input user for regex (Never trust in user input)
 function escapeRegExp(str) {
   return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 }
 
+// Build template html for song
 function tplHTMLSong(source, title, artist, genre) {
   source = (typeof source === "string") ? source : '';
   title = (typeof title === "string") ? title : '';
@@ -67,6 +69,7 @@ function tplHTMLSong(source, title, artist, genre) {
       var currentSong = null;
       var nextSong = null;
 
+      // Autoplay the next song in list if exists
       $(_audio).on('ended', function () {
         if (currentSong !== null) {
           var next = currentSong.parent().next();
@@ -146,6 +149,7 @@ function tplHTMLSong(source, title, artist, genre) {
         songListName = researchListSong(songList);
       });
 
+      // Workaround research on last char deleted
       $('input.search').on('keydown', function(e) {
           var value = $(this).val();
 
@@ -154,6 +158,7 @@ function tplHTMLSong(source, title, artist, genre) {
           }
       });
 
+      // Research on (title, artist, genre)
       $('input.search').on('keyup', function(e) {
           var value = $.trim($(this).val());
 

@@ -35,6 +35,7 @@ $( document ).ready(function() {
 
     });
 
+    // Change view dynamically
     $(document).on('click', '.change-view', function() {
         // This statement manage the menu navigation
         var currentElement = $(this);
