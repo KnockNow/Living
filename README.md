@@ -35,7 +35,7 @@ Note :
 LocalStorage :
   -> Préférence utilisateur :
         - Liste, mosaique
-        - Couleur ? (theme du site)
+        - Couleur (theme du site)
 =======================
 Technologies utilisées
 =======================
@@ -51,3 +51,8 @@ Nous souhaitons implémenter un ficher json contenant la liste des pistes dispon
 Cependant, le navigateur Chrome ne nous permettait pas de charger, via une requête Ajax, le tableau json.
 (Erreur : Allow-Control-Allow-Origin).
 La seule solution connue oblige à modifié l'en-tête de reponse HTTP grâce à un langage côté serveur.
+
+
+=======================
+Documentation
+=======================
