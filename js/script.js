@@ -47,7 +47,9 @@ function tplHTMLSong(source, title, artist, genre) {
     var songListName = [];
 
     $.each(songList, function(index) {
-      songListName.push($(this).text());
+      $(this).contents().filter(function() {
+        songListName.push($(this).text());
+      });
     });
 
     return songListName;
@@ -122,13 +124,13 @@ function tplHTMLSong(source, title, artist, genre) {
 
       // Search feature
       // List by default content
-      var songList = $('#panel-music td.song-title');
+      var songList = $('#panel-music td');
       var songListName = researchListSong(songList);
 
       // Event trigger on loaded json file check js (list_song.js)
       // Modification of some elements in DOM with AJAX must be reload to avoid missing DOM
       $('#panel-music').on(LIVING.events.song.list_updated, function() {
-        songList = $(document).find('#panel-music td.song-title');
+        songList = $(document).find('#panel-music td');
         songListName = researchListSong(songList);
       });
 
