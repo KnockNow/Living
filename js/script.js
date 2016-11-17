@@ -60,6 +60,14 @@ function tplHTMLSong(source, title, artist, genre) {
   }
 
   $(function(){
+      var container = $(".container");
+      var mute = $('#muteButton');
+      var muted = $('#mutedButton');
+      var close = $('#closeButton');
+      var play = $("#playButton");
+      var pause = $("#pauseButton");
+      var seek = $("#seek");
+
       var bar = $('#bar');
       var cursor = $('#cursor');
       var player = $('audio');
@@ -82,7 +90,44 @@ function tplHTMLSong(source, title, artist, genre) {
 
       // Manage play/pause audio for song in table and style
       $('#panel-music').on('click', 'td.song-title', function() {
+
           nextSong = $(this);
+          
+          // Buttons de control audio          
+          $("#controlAudio").css("display", "block");
+          $('#playButton').css("display", "none");
+          $('#pauseButton').css("display", "inline-block");
+          _audio.volume = 1;
+          muted.hide();
+          mute.show();
+
+          play.click(function() {
+              _audio.play();
+              $(this).hide();
+              pause.show();
+              addPauseIcon(nextSong);
+          });
+
+          pause.click(function() {
+              _audio.pause();
+              $(this).hide();
+              play.show();
+              addPlayIcon(nextSong);
+          });
+
+          mute.click(function() {
+              _audio.volume = 0;
+              $(this).hide();
+              muted.show();
+          });
+
+
+          muted.click(function() {
+              _audio.volume = 1;
+              $(this).hide();
+              mute.show();
+          });
+
 
           if (currentSong === null) { // Any song played
             addPauseIcon(nextSong);
@@ -114,7 +159,7 @@ function tplHTMLSong(source, title, artist, genre) {
           var songName = nextSong.text();
 
           player.attr('src', songSrc);
-          labelCurrentSong.text(songName);
+          labelCurrentSong.text(" " + songName);
 
           _audio.play();
 
@@ -135,6 +180,7 @@ function tplHTMLSong(source, title, artist, genre) {
             minutes = (time - seconds) / 60;
             hours = (time - seconds - (minutes * 60)) / 3600;
         }, 200);
+
       });
 
       // Search feature
@@ -176,5 +222,8 @@ function tplHTMLSong(source, title, artist, genre) {
             });
           }
       });
+
+
   });
+
 })(jQuery);

@@ -50,6 +50,7 @@
 			</nav>
     	<div class="col-md-10 main panel-display" id="panel-home">
 				<h1 class='text-shadow'>Welcome on Living,<br> just listen to<br> your music and enjoy !</h1>
+
 				<div class="struc">
 					<span class="ion-headphone"></span>
 					<label>Find your music and enjoy</label>
@@ -91,11 +92,30 @@
 				<span id="bar"></span>
 				<label id="cursor"></label>
 			</span>
-			<span class="ion-music-note"></span>
-			<h2 id="currentSong">No song played.</h2>
-			<audio id="audio-player" src="#" controls>
-				Your browsers is not compatible.
-			</audio>
+			<div id="controlAudio" class="row">
+				<div id="currentSongDiv" class="col-xs-6">
+					<h2 id="currentSong" class="ion-music-note"> No song played.</h2>
+				</div>
+
+				<!-- Bouttons de contrôle-->
+				<div class="col-xs-6"><!-- player -->
+						<div id="playerGradient">
+				            <button id="playButton"><span class='ion-play'></span></button>
+				            <button id="pauseButton"><span class='ion-pause'></button><!-- / n'est pas afficher de base-->
+				            <button id="mutedButton"><span class='ion-volume-mute'></button></button>
+				            <button id="muteButton"><span class='ion-volume-high'></button></button><!-- / n'est pas afficher de base-->
+
+				                <!--<input type="range" id="seek" value="0" max=""/>-->
+												<div id="seek"></div>
+
+				            <button id="closeButton"><span class='ion-stop'></button><!-- / n'est pas afficher de base-->
+
+				        </div><!-- / player -->
+				</div><!-- / Container-->
+			</div>
+				<audio id="audio-player" src="#" controls>
+					Votre navigateur ne gère pas l'élément <code>video</code>.
+				</audio>
 		</footer>
 	</body>
 </html>
